@@ -7,9 +7,9 @@
             alt="R Logo"
             class="shrink mr-2"
             contain
-            src="https://i.imgur.com/mrmchB2.png"
+            src="https://makeitsimple.io/LogoMayus.png"
             transition="scale-transition"
-            width="40"
+            width="12rem"
           />
         </router-link>
         <span class="headline d-none d-md-flex">Lista de tareas</span>

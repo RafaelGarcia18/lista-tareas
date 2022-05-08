@@ -15,7 +15,7 @@
       <div>{{ taskObject.description }}</div>
     </v-card-text>
     <v-card-actions>
-      <v-btn block color="red" dark @click="removeCat"> Eliminar </v-btn>
+      <v-btn block color="red" dark @click="removeTask"> Eliminar </v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -25,29 +25,17 @@ export default {
   name: "Tasks",
   props: ["taskObject", "index"],
   data() {
-    return {
-      tasksStorage: [],
-    };
+    return {};
   },
 
-  created() {
-    if (localStorage.getItem("tasks")) {
-      try {
-        this.tasksStorage = JSON.parse(localStorage.getItem("tasks"));
-      } catch (e) {
-        localStorage.removeItem("tasks");
-      }
-    }
-  },
+  created() {},
   methods: {
-    removeCat() {
-      console.log("Se presiono");
-      this.tasksStorage.splice(this.index, 1);
-      this.saveCats();
-    },
-    saveCats() {
-      const parsed = JSON.stringify(this.tasksStorage);
+    removeTask() {
+      var tasksStorage = JSON.parse(localStorage.getItem("tasks"));
+      tasksStorage.splice(this.index, 1);
+      const parsed = JSON.stringify(tasksStorage);
       localStorage.setItem("tasks", parsed);
+      this.$emit("update");
     },
   },
 };
